@@ -14,5 +14,6 @@ target_sources(BaMon
     src/main.cpp
     src/bluetooth_logger/bluetooth_logger.cpp
     src/log_hook/log_hook.cpp
+    src/camera/camera.cpp
     )
 

@@ -103,17 +103,18 @@ void BluetoothLogger::on_discovery_state_changed(Adapter *adapter,
     }
 }   
 
-int BluetoothLogger::init() {
+GMainContext *BluetoothLogger::init() {
     // set up DBus
     GMainLoop *loop = NULL;
     GDBusConnection *conn = g_bus_get_sync(G_BUS_TYPE_SYSTEM, NULL, NULL);
     loop = g_main_loop_new(NULL, FALSE);
+    GMainContext *context = g_main_loop_get_context(loop);
 
     // get default adapter
     default_adapter = binc_adapter_get_default(conn);
     if (!default_adapter) {
         fprintf(stderr, "No Bluetooth adapter found\n");
-        return 1;
+        exit(1); //not enough time to figure out what to do here
     }
 
     //testing
@@ -130,8 +131,5 @@ int BluetoothLogger::init() {
     binc_adapter_set_discovery_cb(default_adapter, &on_scan_result);
     binc_adapter_start_discovery(default_adapter);
 
-    // run
-    g_main_loop_run(loop);
-
-    return 0;
+    return context;
 }
