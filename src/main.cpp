@@ -1,6 +1,4 @@
-// NOTE : This requires some configuration on the RN4871
-// Use command : NA,06,55E405D2AF9FA98FE54A7DFE43535349 to set the
-// advertisement UUID packet so it can be identified.
+// READ README.md FOR IMPORTANT INSTRUCTIONS ELSE THE CODE WILL NOT WORK
 
 #include "bluetooth_logger/bluetooth_logger.h"
 

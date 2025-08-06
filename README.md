@@ -23,7 +23,7 @@ To add the bluez_inc library you must run:
 Make a `build` directory, and run `cmake` and then `make`.
 
 # Hardware
-Make sure you have the latest version of `baby-monitor` on the daugherboard.
+Make sure you have the latest version of `baby-monitor` from main on the daugherboard. (THERE ARE NEW CRITICAL CHANGES)
 
 ```
 $ mkdir build
