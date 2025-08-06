@@ -8,6 +8,7 @@ target_link_libraries(BaMon ${OpenCV_LIBS})
 add_subdirectory(lib/bluez_inc)
 target_link_libraries(BaMon ${OpenCV_LIBS} Binc)
 target_include_directories(BaMon PRIVATE lib/bluez_inc/binc ${GLIB_INCLUDE_DIRS})
+target_include_directories(BaMon PRIVATE src)
 target_sources(BaMon 
     PUBLIC
     src/main.cpp
