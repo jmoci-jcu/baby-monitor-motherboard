@@ -8,7 +8,6 @@
 Adapter *BluetoothLogger::default_adapter = NULL;
 
 void BluetoothLogger::on_connection_state_changed(Device *device, ConnectionState state, const GError *error) {
-    log_info(TAG,"test");
     if (error != NULL) {
         log_info(TAG, "(dis)connect failed (error %d: %s)", error->code, error->message);
         return;
