@@ -17,3 +17,9 @@ target_sources(BaMon
     src/camera/camera.cpp
     )
 
+target_sources(PiCapture 
+    PUBLIC
+    src/main.cpp
+    src/log_storer/log_storer.cpp
+    )
+
