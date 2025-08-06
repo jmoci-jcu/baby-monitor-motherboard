@@ -78,6 +78,9 @@ int cam::init(){
 }
 
 void cam::triggerMotionDetection(){
+    if(isLoopActive){
+        return;
+    }
     isLoopActive = true;
     isRecording = false;
     recordingFrames = 0;

@@ -12,15 +12,12 @@ void processLog(const std::string logMessage) {
 
     if (suffix == "Sound Threshold") {
         //cam::triggerMotionDetection();
-        log_info("log", "Sound");
     } else if (suffix == "Motion Threshold") {
         cam::triggerMotionDetection();
-        log_info("log", "Motion");
     } else if (suffix == "Vibration Threshold") {
         //cam::triggerMotionDetection();
-        log_info("log", "Vibration");
     } else {
-        log_info("log", "Ignore corrupted log");
+        log_info("log", "Ignoring corrupted log");
     }
 
 }
