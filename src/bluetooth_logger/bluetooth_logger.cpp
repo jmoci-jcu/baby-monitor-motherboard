@@ -8,6 +8,7 @@
 #include <sstream>
 #include <vector>
 #include "log_hook/log_hook.h"
+#include "log_storer/log_storer.h"
 
 Adapter *BluetoothLogger::default_adapter = NULL;
 
@@ -39,6 +40,7 @@ void BluetoothLogger::on_notify(Device *device, Characteristic *ch, const GByteA
 
     while(std::getline(stream,line)){
         processLog(line); //this isn't great but nice and simple
+        write_log(line);
     }
 }
 

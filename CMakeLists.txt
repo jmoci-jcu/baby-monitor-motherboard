@@ -15,11 +15,7 @@ target_sources(BaMon
     src/bluetooth_logger/bluetooth_logger.cpp
     src/log_hook/log_hook.cpp
     src/camera/camera.cpp
-    )
-
-target_sources(PiCapture 
-    PUBLIC
-    src/main.cpp
     src/log_storer/log_storer.cpp
     )
+
 

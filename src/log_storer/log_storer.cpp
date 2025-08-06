@@ -10,7 +10,7 @@ void write_log(std::string logString)   {
 
     std::cout << "Saving message to file: " << filename << std::endl;
 
-    std::ofstream outfile(filename);
+    std::ofstream outfile(filename,std::ios::app);
     if (outfile.is_open()) {
         outfile << logString << std::endl;
         outfile.close();
