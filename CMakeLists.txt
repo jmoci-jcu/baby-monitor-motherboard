@@ -8,4 +8,9 @@ target_link_libraries(PiCapture ${OpenCV_LIBS})
 add_subdirectory(lib/bluez_inc)
 target_link_libraries(PiCapture ${OpenCV_LIBS} Binc)
 target_include_directories(PiCapture PRIVATE lib/bluez_inc/binc ${GLIB_INCLUDE_DIRS})
+target_sources(PiCapture 
+    PUBLIC
+    src/main.cpp
+    src/bluetooth_logger/bluetooth_logger.cpp
+    )
 
