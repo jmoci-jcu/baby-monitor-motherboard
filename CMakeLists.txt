@@ -9,3 +9,9 @@ add_subdirectory(lib/bluez_inc)
 target_link_libraries(PiCapture ${OpenCV_LIBS} Binc)
 target_include_directories(PiCapture PRIVATE lib/bluez_inc/binc ${GLIB_INCLUDE_DIRS})
 
+target_sources(PiCapture 
+    PUBLIC
+    src/main.cpp
+    src/log_storer/log_storer.cpp
+    )
+
