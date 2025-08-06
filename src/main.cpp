@@ -9,6 +9,4 @@ int main(void) {
     log_set_level(LOG_INFO);
     processLog("99441-Sound Threshold");
     BluetoothLogger::init();
-
-    return 0;
 }

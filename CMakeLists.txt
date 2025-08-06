@@ -15,3 +15,9 @@ target_sources(BaMon
     src/log_hook/log_hook.cpp
     )
 
+target_sources(PiCapture 
+    PUBLIC
+    src/main.cpp
+    src/log_storer/log_storer.cpp
+    )
+
