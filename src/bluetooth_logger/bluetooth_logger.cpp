@@ -28,7 +28,7 @@ void BluetoothLogger::on_connection_state_changed(Device *device, ConnectionStat
 
 // Notification callback: prints incoming data
 void BluetoothLogger::on_notify(Device *device, Characteristic *ch, const GByteArray *value) {
-    printf("[RX] %.*s\n", value->len, value->data);
+    printf("%.*s\n", value->len, value->data);
 }
 
 // Called when services are resolved: subscribe to TX notifications
