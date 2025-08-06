@@ -15,7 +15,7 @@
 
 class BluetoothLogger{
     public:
-    static int init();
+    static GMainContext *init();
     private:
     static Adapter *default_adapter;
     static void on_connection_state_changed(Device *device, ConnectionState state, const GError *error);

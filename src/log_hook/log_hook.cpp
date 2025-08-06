@@ -1,6 +1,6 @@
 #include "log_hook.h"
 #include "logger.h"
-
+#include "camera/camera.h"
 
 void processLog(const std::string logMessage) {
 
@@ -11,13 +11,13 @@ void processLog(const std::string logMessage) {
     std::string suffix = logMessage.substr(dashPos + 1);
 
     if (suffix == "Sound Threshold") {
-        log_info("log", "Sound");
+        //cam::triggerMotionDetection();
     } else if (suffix == "Motion Threshold") {
-        log_info("log", "Motion");
+        cam::triggerMotionDetection();
     } else if (suffix == "Vibration Threshold") {
-        log_info("log", "Vibration");
+        //cam::triggerMotionDetection();
     } else {
-        log_info("log", "Ignore corrupted log");
+        log_info("log", "Ignoring corrupted log");
     }
 
 }

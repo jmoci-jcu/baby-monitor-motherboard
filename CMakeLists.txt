@@ -8,16 +8,14 @@ target_link_libraries(BaMon ${OpenCV_LIBS})
 add_subdirectory(lib/bluez_inc)
 target_link_libraries(BaMon ${OpenCV_LIBS} Binc)
 target_include_directories(BaMon PRIVATE lib/bluez_inc/binc ${GLIB_INCLUDE_DIRS})
+target_include_directories(BaMon PRIVATE src)
 target_sources(BaMon 
     PUBLIC
     src/main.cpp
     src/bluetooth_logger/bluetooth_logger.cpp
     src/log_hook/log_hook.cpp
-    )
-
-target_sources(PiCapture 
-    PUBLIC
-    src/main.cpp
+    src/camera/camera.cpp
     src/log_storer/log_storer.cpp
     )
+
 

@@ -4,11 +4,15 @@
 
 
 #include "bluetooth_logger.h"
+#include <iostream>
+#include <sstream>
+#include <vector>
+#include "log_hook/log_hook.h"
+#include "log_storer/log_storer.h"
 
 Adapter *BluetoothLogger::default_adapter = NULL;
 
 void BluetoothLogger::on_connection_state_changed(Device *device, ConnectionState state, const GError *error) {
-    log_info(TAG,"test");
     if (error != NULL) {
         log_info(TAG, "(dis)connect failed (error %d: %s)", error->code, error->message);
         return;
@@ -28,7 +32,16 @@ void BluetoothLogger::on_connection_state_changed(Device *device, ConnectionStat
 
 // Notification callback: prints incoming data
 void BluetoothLogger::on_notify(Device *device, Characteristic *ch, const GByteArray *value) {
-    printf("[RX] %.*s\n", value->len, value->data);
+    //read through string and separate by \n
+    //std::vector<std::string> lines;
+    std::string logs = (char*)value->data;
+    std::istringstream stream(logs);
+    std::string line;
+
+    while(std::getline(stream,line)){
+        processLog(line); //this isn't great but nice and simple
+        write_log(line);
+    }
 }
 
 // Called when services are resolved: subscribe to TX notifications
@@ -92,17 +105,18 @@ void BluetoothLogger::on_discovery_state_changed(Adapter *adapter,
     }
 }   
 
-int BluetoothLogger::init() {
+GMainContext *BluetoothLogger::init() {
     // set up DBus
     GMainLoop *loop = NULL;
     GDBusConnection *conn = g_bus_get_sync(G_BUS_TYPE_SYSTEM, NULL, NULL);
     loop = g_main_loop_new(NULL, FALSE);
+    GMainContext *context = g_main_loop_get_context(loop);
 
     // get default adapter
     default_adapter = binc_adapter_get_default(conn);
     if (!default_adapter) {
         fprintf(stderr, "No Bluetooth adapter found\n");
-        return 1;
+        exit(1); //not enough time to figure out what to do here
     }
 
     //testing
@@ -119,8 +133,5 @@ int BluetoothLogger::init() {
     binc_adapter_set_discovery_cb(default_adapter, &on_scan_result);
     binc_adapter_start_discovery(default_adapter);
 
-    // run
-    g_main_loop_run(loop);
-
-    return 0;
+    return context;
 }
