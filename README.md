@@ -1,28 +1,22 @@
 # Introduction
 
-This is a minimal example of how to read images from the Raspberry Pi camera into OpenCV.
+This code is intended to be run on a raspberry pi 4 and communicate with the project baby monitor daughterboard. The role of this code is to receive logs from the daughterboard and store them in a log file. Additionally, certain logs can trigger the camera to check for baby movement and record.
 
 
 # Prerequisites
 
-You must install:
+You must install (Installed in lab):
  - `libopencv-dev`
  - `gstreamer1.0-tools` 
  - `gstreamer1.0-plugins-base-apps`
 
-Run this command on your Raspberry Pi:
+And (Not installed in lab)
+ - `libglib2.0-dev`
 
-```
-$ sudo apt install libopencv-dev gstreamer1.0-tools gstreamer1.0-plugins-base-apps
-```
 
-## Test the camera and gstreamer installation
+To add the bluez_inc library you must run:
+- `git submodule update --init --recursive`
 
-Run this command:
-
-```
-$ gst-launch-1.0 libcamerasrc ! video/x-raw, width=800, height=600, framerate=15/1 ! videoconvert ! ximagesink
-```
 
 # Build and run
 
@@ -33,7 +27,5 @@ $ mkdir build
 $ cd build
 $ cmake ..
 $ make 
-$ ./PiCapture
+$ ./BaMon
 ```
-
-A direct HDMI video output is recommended. Remote access over VNC or X forwarding will be a bit slow and laggy.

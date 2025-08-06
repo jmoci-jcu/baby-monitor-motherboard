@@ -2,8 +2,6 @@
 // Use command : NA,06,55E405D2AF9FA98FE54A7DFE43535349 to set the
 // advertisement UUID packet so it can be identified.
 
-//git submodule update --init --recursive
-//sudo apt install libglib2.0-dev
 
 #include "bluetooth_logger.h"
 
