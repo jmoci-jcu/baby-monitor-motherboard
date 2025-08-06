@@ -1,16 +1,12 @@
+// READ README.md FOR IMPORTANT INSTRUCTIONS ELSE THE CODE WILL NOT WORK
 
+#include "bluetooth_logger/bluetooth_logger.h"
+#include "log_hook/log_hook.h"
+#include "logger.h"
 
-#include <iostream>
-#include <fstream>
-#include <string>
-#include "logger.h"  // Custom logging system
-#include "log_storer/log_storer.h"
-
-
-int main() {
+int main(void) {
     log_enabled(TRUE);
     log_set_level(LOG_INFO);
-
-    write_log(std::string("test"));
-
+    processLog("99441-Sound Threshold");
+    BluetoothLogger::init();
 }
